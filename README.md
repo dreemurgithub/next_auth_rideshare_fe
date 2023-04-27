@@ -14,3 +14,7 @@ Run the compiled version
 [Trello Board for the front end](https://trello.com/b/2zewDXi9)
 
 [Use Case Diagram](https://drive.google.com/file/d/1EBREZRCl0H9Ft1f3wodKh038tRkkflt-/view?usp=sharing)
+
+[Edit the Diagram](https://app.diagrams.net/#G1EBREZRCl0H9Ft1f3wodKh038tRkkflt-)
+
+
