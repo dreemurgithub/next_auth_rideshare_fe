@@ -1,0 +1,8 @@
+.map_container {
+    width : 80vw;
+    height: 40vh;
+}
+.map_container> * {
+    width: 5vw ;
+    height: 5vh;
+}
