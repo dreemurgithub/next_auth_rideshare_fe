@@ -18,7 +18,7 @@ export default function Trip(){
 
     // const string_src_promise = await fetch('/api/current')
     // const string_src_L = await string_src_promise.json()
-    const location = {latitude: 16.0628736,longitude: 108.2195968}
+    const [location,setLocation] = useState({latitude: 16.06128014179922,longitude: 108.2274948567431})
     const {isLoaded} = useLoadScript({
         googleMapsApiKey : process.env.Google_map_api_key_firebase
     })
@@ -44,7 +44,12 @@ export default function Trip(){
     else return <>
         <div>Map</div>
         <Map_react longitude={location.longitude} latitude={location.latitude} />
+        <button onClick={()=>{
+            setLocation({latitude: 16.060462028009404,longitude: 108.22446237388208})
+        } }>Edit the place to Bach Dang - Duong hoa</button>
     </>
+//     16.060462028009404, 108.22446237388208 Duong hoa bach dang
+//     16.06128014179922, 108.2274948567431 cau rong
 }
 function Map_react(location: { latitude : number , longitude : number } ){
     return <>
