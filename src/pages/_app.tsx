@@ -12,8 +12,10 @@ export default function App({Component, pageProps}: AppProps) {
     return <SessionProvider session={pageProps.session}>
         <>
             <Layout>
+                <div id={'wrapper'}>
 
-                <Component {...pageProps} />
+                    <Component {...pageProps} />
+                </div>
             </Layout>
 
         </>

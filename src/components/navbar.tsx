@@ -1,14 +1,17 @@
 import Link from 'next/link'
 export default function Navbar(){
     return <>
-        <nav>
-            <ul style={{display:'flex',gap:'2em'}}>
-                <li><Link href={'/'}>Home</Link></li>
-                <li><Link href={'/user'}>User</Link></li>
-                <li><Link href={'/trip'}>trip</Link></li>
-                <li><Link href={'/driver'}>driver</Link></li>
-                <li><Link href={'/help'}>Help</Link></li>
-            </ul>
+        <nav id={'navbar'} className={'navbar navbar-expand-lg bg-body-tertiary '}>
+            <div className={'container-fluid '}>
+
+                <ul className={'navbar-nav'}>
+                    <li className={'nav-item'}><Link className={'nav-link'} href={'/'}>Home</Link></li>
+                    <li className={'nav-item'}><Link className={'nav-link'} href={'/user'}>User</Link></li>
+                    <li className={'nav-item'}><Link className={'nav-link'} href={'/trip'}>trip</Link></li>
+                    <li className={'nav-item'}><Link className={'nav-link'} href={'/driver'}>driver</Link></li>
+                    <li className={'nav-item'}><Link className={'nav-link'} href={'/help'}>Help</Link></li>
+                </ul>
+            </div>
         </nav>
     </>
 }
