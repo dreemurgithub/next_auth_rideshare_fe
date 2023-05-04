@@ -6,11 +6,6 @@ export default function Map({string_src}: {string_src : string }){
 
     return <>
         <p>{string_src}</p>
-        <iframe
-            width="300"
-            height="170"
-            src={string_src}
-        >
-        </iframe>
+
     </>
 }
