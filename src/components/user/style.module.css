@@ -1,0 +1,29 @@
+
+@media (min-width: 1200px) {
+    .wallet {
+        display: grid;
+        grid-template-columns: auto auto auto;
+    }
+}
+
+@media (min-width: 900px) and (max-width: 1200px) {
+    .wallet {
+        display: grid;
+        grid-template-columns: auto auto ;
+    }
+}
+
+@media (min-width: 600px)and (max-width: 900px) {
+    .wallet {
+        display: grid;
+        grid-template-columns: auto auto ;
+    }
+}
+.card_cvv {
+    display: flex;
+    justify-content: space-between;
+}
+.card_cvv > * {
+    border: none;
+    /*margin-left: 1em;*/
+}

@@ -41,3 +41,8 @@ Dự kiến mai
 - Tạo tương tác của user và driver
 - Style cho wallet
 - Tạo danh sách static page cho driver
+
+### Ngày 5/5
+- Edit Wallet component
+  - Style wallet
+  - User thêm creditcard mới
