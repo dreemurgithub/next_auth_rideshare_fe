@@ -10,17 +10,17 @@ export default function Wallet() {
     }, [])
 
     function add_card() {
-        const name_input: HTMLInputElement = document.querySelector('input#name')
-        const creditNumber_input: HTMLInputElement = document.querySelector('input#creditNumber')
-        const Month_input: HTMLInputElement = document.querySelector('select#ccmonth')
-        const year_input: HTMLInputElement = document.querySelector('select#ccyear')
-        const cvv_input: HTMLInputElement = document.querySelector('input#cvv')
+        const name_input: HTMLInputElement | null = document.querySelector('input#name')
+        const creditNumber_input: HTMLInputElement | null = document.querySelector('input#creditNumber')
+        const Month_input: HTMLInputElement | null = document.querySelector('select#ccmonth')
+        const year_input: HTMLInputElement | null = document.querySelector('select#ccyear')
+        const cvv_input: HTMLInputElement | null = document.querySelector('input#cvv')
         const new_card = {
-            creditnumber: creditNumber_input.value,
-            expM: parseInt(Month_input.value),
-            expY: parseInt(year_input.value) ,
-            name: name_input.value ,
-            CVV : parseInt(cvv_input.value)
+            creditnumber: (creditNumber_input)? creditNumber_input.value : null,
+            expM: (Month_input)? parseInt(Month_input.value) : null,
+            expY: (year_input)? parseInt(year_input.value)  : null,
+            name: (name_input)? name_input.value : null ,
+            CVV : (cvv_input)? parseInt(cvv_input.value) : null
         }
         fetch('/api/user/wallet',{
             method:'POST',
@@ -133,18 +133,18 @@ export default function Wallet() {
         </div>
 
         <div className={styles.wallet}>
-            {wallet.map((el: any) => <div className={'card border'}>
+            {wallet.map((el: any , index:number) => <div className={'card border'} key={index}>
                 <div className={styles.card_cvv}>
                     <h4 className={'btn btn-dark'}>{el.name}</h4>
                     <h4 className={'btn btn-outline-danger'}>Remove card</h4>
                 </div>
                 <div className={'card-body input-group flex-nowrap'}>
-                    <input type="number" className={'form-control'} min='0' size='4' placeholder={'1000.000'}/>
+                    <input type="number" className={'form-control'} min='0'  />
                     {/*<label className={'btn btn-outline-primary'}>+</label>*/}
                     <button type="submit" className="btn btn-primary input-group-text">Add money</button>
                 </div>
 
-                <ul class="list-group list-group-flush">
+                <ul className="list-group list-group-flush">
                     <li className="list-group-item">Card
                         number: <b>****{el.creditnumber.slice(el.creditnumber.length - 4, el.creditnumber.length)} </b>
                     </li>

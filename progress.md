@@ -54,3 +54,8 @@ Dự kiến mai
 Dự kiến mai
 - Thiết kế lại sơ đồ tương tác của user và driver
 - Chuyển được dữ liệu đi từ user qua driver để thử tương tác
+
+### Ngày 6/5
+- Tạo route cho return về từng driver khác nhau để chuẩn bị static page cho driver
+- Tạo danh sách static page bằng next
+- Tạo form đăng ký cho User chọn Driver
