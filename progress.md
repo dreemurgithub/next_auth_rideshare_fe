@@ -44,5 +44,13 @@ Dự kiến mai
 
 ### Ngày 5/5
 - Edit Wallet component
-  - Style wallet
+  - Style wallet từ fake data
   - User thêm creditcard mới
+  - Đảm bảo các component responsive căn bản
+- Style lại component lịch sử chuyến đi cũ của user
+  - Mỗi chuyến đi là một card riêng biệt, lấy dữ liệu từ fake data
+  - thiết kế các card lịch sử chuyến đi responsive căn bản
+
+Dự kiến mai
+- Thiết kế lại sơ đồ tương tác của user và driver
+- Chuyển được dữ liệu đi từ user qua driver để thử tương tác
