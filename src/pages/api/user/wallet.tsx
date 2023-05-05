@@ -8,7 +8,7 @@ export default async function handler(req : NextApiRequest,res: NextApiResponse)
         const data_string = await fs.readFile(filepath,"utf8")
         const data_Json = JSON.parse(data_string)
         data_Json.push(req.body)
-        // await fs.writeFile(filepath,JSON.stringify(data_Json))
+        await fs.writeFile(filepath,JSON.stringify(data_Json))
 
         res.status(200).send(data_Json)
         return

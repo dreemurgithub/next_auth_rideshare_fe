@@ -3,12 +3,14 @@
     .wallet {
         display: grid;
         grid-template-columns: auto auto auto;
+        gap: 1em;
     }
 }
 
 @media (min-width: 900px) and (max-width: 1200px) {
     .wallet {
         display: grid;
+        gap: 1em;
         grid-template-columns: auto auto ;
     }
 }
@@ -16,6 +18,7 @@
 @media (min-width: 600px)and (max-width: 900px) {
     .wallet {
         display: grid;
+        gap: 1em;
         grid-template-columns: auto auto ;
     }
 }

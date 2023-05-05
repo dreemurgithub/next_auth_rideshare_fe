@@ -12,17 +12,27 @@ export default function Wallet() {
     function add_card() {
         const name_input: HTMLInputElement = document.querySelector('input#name')
         const creditNumber_input: HTMLInputElement = document.querySelector('input#creditNumber')
-        alert(JSON.stringify([name_input.value, creditNumber_input.value]))
+        const Month_input: HTMLInputElement = document.querySelector('select#ccmonth')
+        const year_input: HTMLInputElement = document.querySelector('select#ccyear')
+        const cvv_input: HTMLInputElement = document.querySelector('input#cvv')
+        const new_card = {
+            creditnumber: creditNumber_input.value,
+            expM: parseInt(Month_input.value),
+            expY: parseInt(year_input.value) ,
+            name: name_input.value ,
+            CVV : parseInt(cvv_input.value)
+        }
+        fetch('/api/user/wallet',{
+            method:'POST',
+            body : JSON.stringify(new_card),
+            mode: 'same-origin',
+            headers : {
+                "Content-type" : "application/json"
+            }
+        }).then(res=>res.json())
+        alert(JSON.stringify(new_card))
     }
 
-    function validate_number(e: any) {
-        const number_l = '0123456789'
-        // let edit_number =e.target.value
-        // edit_number.length -=1
-        // e.target.value = edit_number
-        // let length = e.target.value.length
-        // e.target.value.chartAt(length) =''
-    }
 
     return <>
         <div id={'wallet'}>
@@ -102,7 +112,7 @@ export default function Wallet() {
                                     <div className="col-sm-4">
                                         <div className="form-group">
                                             <label htmlFor="cvv">CVV/CVC</label>
-                                            <input className="form-control" id="cvv" type="number" placeholder="123"/>
+                                            <input className="form-control" id="cvv" type="number" placeholder="123" max={'999'}/>
                                         </div>
                                     </div>
                                 </div>
@@ -121,9 +131,7 @@ export default function Wallet() {
                 </div>
             </div>
         </div>
-        <div id={'save_card'}>
-            <p>{JSON.stringify(wallet)}</p>
-        </div>
+
         <div className={styles.wallet}>
             {wallet.map((el: any) => <div className={'card border'}>
                 <div className={styles.card_cvv}>
