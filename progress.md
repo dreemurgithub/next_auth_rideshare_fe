@@ -65,3 +65,11 @@ Dự kiến mai
 - Refactor lại 1 số api route do phải edit lại cấu trúc fake data
 - Filter dựa vào session của cả user và driver
 - build xong danh sách static page, lấy danh sách từ file/driver/driver.json
+- Lấy location hiện tại dựa trên navigator
+- Debug để đảm bảo data hiển thị đúng
+
+Dự kiến mai
+ - Tạo chức năng submit user request
+ - Tạo chức năng driver accept user request
+ - Tạo chức năng các chuyến xe chưa hoàn thành
+ - Tạo chức năng đánh giá sau khi hoàn thành
