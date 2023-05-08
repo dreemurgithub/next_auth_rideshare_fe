@@ -2,7 +2,9 @@ import path from "path";
 import {promises as fs} from "fs";
 import {useEffect, useState} from "react";
 import { useSession } from "next-auth/react"
-
+import styles from "@/components/trip/history.module.css";
+import {GoogleMap, MarkerF, useLoadScript} from "@react-google-maps/api";
+import * as dotenv from 'dotenv'
 export async function getStaticPaths(){
 
     const filepath = path.join(process.cwd(),'file','driver','driver.json')
@@ -80,6 +82,7 @@ export default function Driver({driver}:{driver :{
                 <label htmlFor="exampleInputPassword1" className="form-label">Address</label>
                 <input type="text" className="form-control" value={'Đà Nẵng'}/>
             </div>
+            <Gmap location={location} />
             <div className="mb-3 form-check">
                 <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
                     <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
@@ -87,4 +90,23 @@ export default function Driver({driver}:{driver :{
             <button type="submit" className="btn btn-primary">Submit</button>
         </form>
     </>
+}
+function Gmap({location}: {location : null | {latitude : number , longitude: number}} ){
+    const {isLoaded} = useLoadScript({
+        googleMapsApiKey: process.env.GoogleAPI_key as string
+    })
+    if (!isLoaded) return <>
+        <div>...Loading...</div>
+        <h1>Trip page</h1>
+
+    </>
+    if(isLoaded&&location===null) return <>
+        <div>...Loading...</div>
+        <h1>Trip page</h1>
+
+    </>
+    if(isLoaded&&location!==null) return <GoogleMap zoom={10} center={{lat: location.latitude, lng: location.longitude}}
+                                       mapContainerClassName={styles.map_container}>
+        <MarkerF position={{lat: location.latitude, lng: location.longitude}}/>
+    </GoogleMap>
 }
