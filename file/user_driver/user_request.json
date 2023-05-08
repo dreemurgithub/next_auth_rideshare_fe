@@ -3,24 +3,32 @@
     "id": "lethanhdat1993",
     "price": 20000,
     "road": 200,
-    "user": "datltfx18467@funix.edu.vn"
+    "user": "datltfx18467@funix.edu.vn",
+    "lat": 16.06128014179922,
+    "long":  108.2274948567431
   },
   {
     "id": "lethanhdat1994",
     "price": 20000,
     "road": 112,
-    "user": "datltfx18467@funix.edu.vn"
+    "user": "datltfx18467@funix.edu.vn",
+    "lat": 16.06128014179922,
+    "long":  108.2274948567431
   },
   {
     "id": "lethanhdat1995",
     "price": 20000,
     "road": 150,
-    "user": "datltfx18467@funix.edu.vn"
+    "user": "datltfx18467@funix.edu.vn",
+    "lat": 16.06128014179922,
+    "long":  108.2274948567431
   },
   {
     "id": "lethanhdat1993",
     "price": 20000,
     "road": 92,
-    "user": "datltfx18467@funix.edu.vn"
+    "user": "datltfx18467@funix.edu.vn",
+    "lat": 16.06128014179922,
+    "long":  108.2274948567431
   }
 ]

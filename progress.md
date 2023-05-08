@@ -59,3 +59,9 @@ Dự kiến mai
 - Tạo route cho return về từng driver khác nhau để chuẩn bị static page cho driver
 - Tạo danh sách static page bằng next
 - Tạo form đăng ký cho User chọn Driver
+
+### Ngày 8/5
+- edit lại fake data
+- Refactor lại 1 số api route do phải edit lại cấu trúc fake data
+- Filter dựa vào session của cả user và driver
+- build xong danh sách static page, lấy danh sách từ file/driver/driver.json

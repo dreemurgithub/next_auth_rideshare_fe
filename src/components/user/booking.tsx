@@ -1,7 +1,9 @@
 import {useEffect, useState} from 'react'
 import Map from '../trip/map'
+import { useSession } from "next-auth/react"
 
 export default function Booking() {
+    const { data: session, status } = useSession()
     const [oldtrip, setoldtrip] = useState<any>([])
     useEffect(() => {
         // async function fetch_(){
@@ -13,7 +15,11 @@ export default function Booking() {
 
         fetch("/api/trip/old")
             .then(res => res.json())
-            .then(data => setoldtrip(data))
+            .then(data => {
+                const email = (session) ? session.user?.email : null
+                const filter_data = data.filter((el:any)=>el.user===email && email!==null )
+                setoldtrip(filter_data)
+            })
 
         // setoldtrip([{text: "name" }])
     }, [])

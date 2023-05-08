@@ -1,6 +1,7 @@
 import path from "path";
 import {promises as fs} from "fs";
 import {useEffect, useState} from "react";
+import { useSession } from "next-auth/react"
 
 export async function getStaticPaths(){
 
@@ -26,16 +27,33 @@ export async function getStaticProps(prop_params : {params: {id: string }}){
 }
 
 export default function Driver({driver}:{driver :{
-        vehicle: string , id: string , url:string , price: number , rating: number,avatar:string} }){
+        vehicle: string , id: string , url:string , price: number , rating: number,avatar:string ,email: string } }){
+    const { data: session, status } = useSession()
+    const any_session = session as any
     const [request,setrequest] = useState([])
+    const [location,setlocation] = useState<any>(null)
+    function getLocation(){
+        // console.log(navigator)
+        navigator.geolocation.getCurrentPosition(showPosition)
+        // navigator.geolocation.getCurrentPosition(position => setlocation(position))
+    }
+    function showPosition(position : any) {
+        console.log(position.coords.latitude)
+        console.log(position.coords.longitude)
+        setlocation({latitude: position.coords.latitude , longitude: position.coords.longitude})
+    }
     useEffect(()=>{
         fetch(`/api/request/${driver.id}`)
             .then(res=>res.json())
             .then(data=>setrequest(data))
+        getLocation()
     },[])
     return <>
-        <p>{JSON.stringify(driver)}</p>
-        <p>{JSON.stringify(request)}</p>
+        <p><b>Driver infor: </b> {JSON.stringify(driver)}</p>
+        <p><b>Request from User: </b> {JSON.stringify(request)}</p>
+        <p><b>The user session: </b> {JSON.stringify(session)}</p>
+        <p><b>The location: </b> {JSON.stringify(location)}</p>
+        <button onClick={getLocation}>Get location</button>
         <div>
 
             <h3>{driver.id}</h3>
@@ -48,12 +66,19 @@ export default function Driver({driver}:{driver :{
         <form>
             <div className="mb-3">
                 <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
-                    <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+                <input type="email" className="form-control" aria-describedby="emailHelp" readOnly={true} disabled={true} value={any_session?  any_session.user.email : ''} />
             </div>
             <div className="mb-3">
                 <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                 <input type="password" className="form-control" id="exampleInputPassword1"/>
+            </div>
+            <div className="mb-3">
+                <label htmlFor="exampleInputPassword1" className="form-label">Address</label>
+                <input type="text" className="form-control" value={'10 Phan Châu Trinh'}/>
+            </div>
+            <div className="mb-3">
+                <label htmlFor="exampleInputPassword1" className="form-label">Address</label>
+                <input type="text" className="form-control" value={'Đà Nẵng'}/>
             </div>
             <div className="mb-3 form-check">
                 <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
