@@ -6,7 +6,7 @@ import styles from "@/components/trip/history.module.css";
 import {GoogleMap, MarkerF, useLoadScript} from "@react-google-maps/api";
 import * as dotenv from 'dotenv'
 import {read_File , Add_File} from "@/utils/file_asset";
-
+import {Read_all_request, Post_request} from "@/constant";
 
 export async function getStaticPaths() {
 
@@ -58,7 +58,8 @@ export default function Driver({driver}: {
     }
 
     useEffect(() => {
-        fetch(`/api/request/${driver.id}`)
+        // fetch(`/api/request/${driver.id}`)
+        fetch(Read_all_request(driver.id))
             .then(res => res.json())
             .then(data => setrequest(data))
         getLocation()
@@ -73,13 +74,13 @@ export default function Driver({driver}: {
             const item = {
                 id: driver.id,
                 price: driver.price,
-                road:(road_element&& road_element.value==='')? parseInt(road_element.value) : 0 ,
+                road:(road_element&& road_element.value==='')? 0  : parseInt(road_element.value),
                 user: any_session.user.email,
                 lat: location.latitude ,
                 long: location.latitude
             }
             console.log(item)
-            fetch('/api/request',{
+            fetch(Post_request,{
                 method:'POST',
                 body: JSON.stringify(item),
                 headers : {

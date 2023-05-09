@@ -13,9 +13,9 @@ export default async function handler(req : NextApiRequest,res: NextApiResponse)
         return
     }
     if (req.method==='GET') {
-        const session = await getServerSession(req, res, authOptions)
-
-        res.status(200).send(session)
+        // const session = await getServerSession(req, res, authOptions)
+        //
+        // res.status(200).send(session)
         return
     }
 }
