@@ -5,11 +5,14 @@ import {useSession} from "next-auth/react"
 import styles from "@/components/trip/history.module.css";
 import {GoogleMap, MarkerF, useLoadScript} from "@react-google-maps/api";
 import * as dotenv from 'dotenv'
+import {read_File , Add_File} from "@/utils/file_asset";
+
 
 export async function getStaticPaths() {
 
-    const filepath = path.join(process.cwd(), 'asset', 'driver', 'driver.json')
-    const data_string = await fs.readFile(filepath, "utf8")
+    // const filepath = path.join(process.cwd(), 'asset', 'driver', 'driver.json')
+    // const data_string = await fs.readFile(filepath, "utf8")
+    const data_string = await read_File('driver','driver.json')
     const data_string_obj = JSON.parse(data_string)
     const driver_path = []
     for (let i = 0; i < data_string_obj.length; i++) driver_path.push({params: {id: data_string_obj[i].id}})
@@ -20,8 +23,10 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(prop_params: { params: { id: string } }) {
     const id = prop_params.params.id
-    const filepath = path.join(process.cwd(), 'asset', 'driver', 'driver.json')
-    const data_string = await fs.readFile(filepath, "utf8")
+    // const filepath = path.join(process.cwd(), 'asset', 'driver', 'driver.json')
+    // const data_string = await fs.readFile(filepath, "utf8")
+    const data_string = await read_File('driver','driver.json')
+
     const data_string_obj = JSON.parse(data_string)
     let index = 0
     for (let i = 0; i < data_string_obj.length; i++) {

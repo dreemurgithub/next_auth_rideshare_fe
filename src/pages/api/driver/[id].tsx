@@ -1,6 +1,7 @@
 import {NextApiRequest , NextApiResponse} from "next";
 import {promises as fs} from 'fs';
 import path from 'path';
+import {read_File , Add_File} from "@/utils/file_asset";
 
 export default async function handler(req : NextApiRequest,res: NextApiResponse){
     const {id} :{id:string | null}  = req.query as any
@@ -12,8 +13,9 @@ export default async function handler(req : NextApiRequest,res: NextApiResponse)
         return
     }
     if (req.method==='GET') {
-        const filepath = path.join(process.cwd(),'asset','driver','driver.json')
-        const data_string = await fs.readFile(filepath,"utf8")
+        // const filepath = path.join(process.cwd(),'asset','driver','driver.json')
+        // const data_string = await fs.readFile(filepath,"utf8")
+        const data_string = await read_File('driver','driver.json')
         const data_string_object = JSON.parse(data_string)
         let index =0
         for(let i=0;i<data_string_object.length;i++){
