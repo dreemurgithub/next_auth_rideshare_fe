@@ -76,3 +76,10 @@ Dự kiến mai
 
 ### Ngày 9/5
  - [Style update](https://github.com/interest-protocol/sui-interface)
+ - Refactor lại các function, 
+   - 4 function helper chính của api/... sẽ dành cho 4 lệnh get/post/put/delete
+   - các function tại frontend cần được fix lại để không bị lỗi type, và đổi biến ngoài frontend=>parameter
+ - Code vẫn còn nhiều điểm hơi rối nên cần dành thêm thời gian format kĩ càng
+
+Dự kiến mai
+ - Tiếp tục format và refactor, cố gắng theo dúng linting style yêu cầu
