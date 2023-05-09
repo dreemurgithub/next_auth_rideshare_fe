@@ -1,5 +1,4 @@
-import path from "path";
-import {promises as fs} from "fs";
+
 import {useEffect, useState} from "react";
 import {useSession} from "next-auth/react"
 import styles from "@/components/trip/history.module.css";
@@ -7,6 +6,8 @@ import {GoogleMap, MarkerF, useLoadScript} from "@react-google-maps/api";
 import * as dotenv from 'dotenv'
 import {read_File , Add_File} from "@/utils/file_asset";
 import {Read_all_request, Post_request} from "@/constant";
+import {submitRequest} from "@/utils/user_driver/submitRequest";
+import Driver_form from "@/components/driver/submit_form";
 
 export async function getStaticPaths() {
 
@@ -46,14 +47,10 @@ export default function Driver({driver}: {
     const [location, setlocation] = useState<any>(null)
 
     function getLocation() {
-        // console.log(navigator)
         navigator.geolocation.getCurrentPosition(showPosition)
-        // navigator.geolocation.getCurrentPosition(position => setlocation(position))
     }
-
     function showPosition(position: any) {
-        console.log(position.coords.latitude)
-        console.log(position.coords.longitude)
+        console.log(position)
         setlocation({latitude: position.coords.latitude, longitude: position.coords.longitude})
     }
 
@@ -64,33 +61,36 @@ export default function Driver({driver}: {
             .then(data => setrequest(data))
         getLocation()
     }, [])
-
-    function submitRequest() {
-        // console.log([driver])
-        if (any_session === null) return
-        else {
-            console.log(any_session.user.email)
-            const road_element : HTMLInputElement | null = document.querySelector('#road')
-            const item = {
-                id: driver.id,
-                price: driver.price,
-                road:(road_element===null|| road_element.value==='')? 0  : parseInt(road_element.value),
-                user: any_session.user.email,
-                lat: location.latitude ,
-                long: location.latitude
-            }
-            console.log(item)
-            fetch(Post_request,{
-                method:'POST',
-                body: JSON.stringify(item),
-                headers : {
-                    "Content-Type": "application/json",
-                },
-                mode : 'same-origin',
-            })
-                .then((res: any)=>res.json()).then((data:any)=>console.log(data))
-        }
-    }
+    // function user_submit(){
+    //     const driver_infor = {id: driver.id, price: driver.price}
+    //     submitRequest(any_session,driver_infor,location)
+    // }
+    // function submitRequest() {
+    //     // console.log([driver])
+    //     if (any_session === null) return
+    //     else {
+    //         console.log(any_session.user.email)
+    //         const road_element : HTMLInputElement | null = document.querySelector('#road')
+    //         const item = {
+    //             id: driver.id,
+    //             price: driver.price,
+    //             road:(road_element===null|| road_element.value==='')? 0  : parseInt(road_element.value),
+    //             user: any_session.user.email,
+    //             lat: location.latitude ,
+    //             long: location.latitude
+    //         }
+    //         console.log(item)
+    //         fetch(Post_request,{
+    //             method:'POST',
+    //             body: JSON.stringify(item),
+    //             headers : {
+    //                 "Content-Type": "application/json",
+    //             },
+    //             mode : 'same-origin',
+    //         })
+    //             .then((res: any)=>res.json()).then((data:any)=>console.log(data))
+    //     }
+    // }
 
     return <>
         <p><b>Driver infor: </b> {JSON.stringify(driver)}</p>
@@ -107,58 +107,59 @@ export default function Driver({driver}: {
             <img src={driver.url} alt=""/>
             <img src={driver.avatar} alt=""/>
         </div>
-        <div>
-            <div className="mb-3">
-                <label htmlFor="exampleInputEmail1" className="form-label">Your email</label>
-                <input type="email" className="form-control" aria-describedby="emailHelp" readOnly={true}
-                       disabled={true} value={any_session ? any_session.user.email : ''}/>
-            </div>
-            <div className="mb-3">
-                <label htmlFor="exampleInputPassword1" className="form-label">Driver</label>
-                <input type="text" className="form-control" readOnly={true} disabled={true} value={driver.id}/>
-            </div>
+        {/*<div>*/}
+        {/*    <div className="mb-3">*/}
+        {/*        <label htmlFor="exampleInputEmail1" className="form-label">Your email</label>*/}
+        {/*        <input type="email" className="form-control" aria-describedby="emailHelp" readOnly={true}*/}
+        {/*               disabled={true} value={any_session ? any_session.user.email : ''}/>*/}
+        {/*    </div>*/}
+        {/*    <div className="mb-3">*/}
+        {/*        <label htmlFor="exampleInputPassword1" className="form-label">Driver</label>*/}
+        {/*        <input type="text" className="form-control" readOnly={true} disabled={true} value={driver.id}/>*/}
+        {/*    </div>*/}
 
-            <div className="mb-3">
-                <label htmlFor="exampleInputPassword1" className="form-label">Price</label>
-                <input type="number" className="form-control" value={driver.price} readOnly={true} disabled={true}/>
-            </div>
-            <div className="mb-3">
-                <label htmlFor="exampleInputPassword1" className="form-label">Trip</label>
-                <input type="number" className="form-control" id='road' min={0}/>
-            </div>
-            <div className="mb-3">
-                <label htmlFor="exampleInputPassword1" className="form-label">Address</label>
-                <input type="text" className="form-control" value={'10 Phan Châu Trinh'}/>
-            </div>
-            <div className="mb-3">
-                <label htmlFor="exampleInputPassword1" className="form-label">Address</label>
-                <input type="text" className="form-control" value={'Đà Nẵng'}/>
-            </div>
+        {/*    <div className="mb-3">*/}
+        {/*        <label htmlFor="exampleInputPassword1" className="form-label">Price</label>*/}
+        {/*        <input type="number" className="form-control" value={driver.price} readOnly={true} disabled={true}/>*/}
+        {/*    </div>*/}
+        {/*    <div className="mb-3">*/}
+        {/*        <label htmlFor="exampleInputPassword1" className="form-label">Trip</label>*/}
+        {/*        <input type="number" className="form-control" id='road' min={0}/>*/}
+        {/*    </div>*/}
+        {/*    <div className="mb-3">*/}
+        {/*        <label htmlFor="exampleInputPassword1" className="form-label">Address</label>*/}
+        {/*        <input type="text" className="form-control" value={'10 Phan Châu Trinh'}/>*/}
+        {/*    </div>*/}
+        {/*    <div className="mb-3">*/}
+        {/*        <label htmlFor="exampleInputPassword1" className="form-label">Address</label>*/}
+        {/*        <input type="text" className="form-control" value={'Đà Nẵng'}/>*/}
+        {/*    </div>*/}
 
-            <Gmap location={location}/>
-            <button type="submit" className="btn btn-primary" onClick={submitRequest}>Submit</button>
-        </div>
+        {/*    <Gmap location={location}/>*/}
+        {/*    <button type="submit" className="btn btn-primary" onClick={user_submit}>Submit</button>*/}
+        {/*</div>*/}
+        <Driver_form any_session={any_session} driver={driver} location={location} />
     </>
 }
 
-function Gmap({location}: { location: null | { latitude: number, longitude: number } }) {
-    const {isLoaded} = useLoadScript({
-        googleMapsApiKey: process.env.GoogleAPI_key as string
-    })
-    if (!isLoaded) return <>
-        <div>...Loading...</div>
-        <h1>Trip page</h1>
-
-    </>
-    if (isLoaded && location === null) return <>
-        <div>...Loading...</div>
-        <h1>Trip page</h1>
-
-    </>
-    if (isLoaded && location !== null) return <GoogleMap zoom={10}
-                                                         center={{lat: location.latitude, lng: location.longitude}}
-                                                         mapContainerClassName={styles.map_container}>
-        <MarkerF position={{lat: location.latitude, lng: location.longitude}}/>
-    </GoogleMap>
-    return null
-}
+// function Gmap({location}: { location: null | { latitude: number, longitude: number } }) {
+//     const {isLoaded} = useLoadScript({
+//         googleMapsApiKey: process.env.GoogleAPI_key as string
+//     })
+//     if (!isLoaded) return <>
+//         <div>...Loading...</div>
+//         <h1>Trip page</h1>
+//
+//     </>
+//     if (isLoaded && location === null) return <>
+//         <div>...Loading...</div>
+//         <h1>Trip page</h1>
+//
+//     </>
+//     if (isLoaded && location !== null) return <GoogleMap zoom={10}
+//                                                          center={{lat: location.latitude, lng: location.longitude}}
+//                                                          mapContainerClassName={styles.map_container}>
+//         <MarkerF position={{lat: location.latitude, lng: location.longitude}}/>
+//     </GoogleMap>
+//     return null
+// }

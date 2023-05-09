@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
 import Map from '../trip/map'
 import { useSession } from "next-auth/react"
-
+import {history_url} from "@/constant";
 export default function Booking() {
     const { data: session, status } = useSession()
     const [oldtrip, setoldtrip] = useState<any>([])
@@ -13,7 +13,7 @@ export default function Booking() {
         // }
         // fetch_()
 
-        fetch("/api/trip/old")
+        fetch(history_url)
             .then(res => res.json())
             .then(data => {
                 const email = (session) ? session.user?.email : null
