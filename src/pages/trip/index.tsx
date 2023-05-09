@@ -10,6 +10,7 @@ import {useSession,signIn, signOut} from "next-auth/react";
 // TODO Marker to MarkerF https://stackoverflow.com/questions/72112491/marker-not-showing-react-google-maps-api-on-localhost-next-js
 export default function Trip() {
     const {data: session} = useSession()
+    const [all_request,setAllRequest] = useState([])
 
     // const navigator = window.navigator
     // const [location,setlocation] = useState<null|{latitude: number , longitude: number} >(null)
@@ -26,9 +27,12 @@ export default function Trip() {
     const {isLoaded} = useLoadScript({
         googleMapsApiKey: process.env.GoogleAPI_key as string
     })
-    const [string_src, setString] = useState<string | null>(null)
+    // const [string_src, setString] = useState<string | null>(null)
     useEffect(() => {
-        setString('https://maps.google.com/maps?q=16.0628736,108.2195968&hl=es&z=14&amp;output=embed')
+        fetch('/api/request')
+            .then(res=>res.json())
+            .then(data=>setAllRequest(data))
+        // setString('https://maps.google.com/maps?q=16.0628736,108.2195968&hl=es&z=14&amp;output=embed')
     }, [])
 
 
@@ -42,7 +46,7 @@ export default function Trip() {
         {/*    url='https://maps.google.com/maps?q=16.0628736,108.2195968&hl=es&z=14&amp;output=embed'*/}
         {/*>*/}
         {/*</Iframe>*/}
-        <p>{string_src}</p>
+        {/*<p>{string_src}</p>*/}
         {/*<Map_google string_src ={string_src}/>*/}
     </>
     if (!isLoaded && session) return <>
@@ -63,6 +67,7 @@ export default function Trip() {
             setLocation({latitude: 16.060462028009404, longitude: 108.22446237388208})
         }}>Edit the place to Bach Dang - Duong hoa
         </button>
+        <p>{JSON.stringify(all_request)}</p>
     </>
 //     16.060462028009404, 108.22446237388208 Duong hoa bach dang
 //     16.06128014179922, 108.2274948567431 cau rong

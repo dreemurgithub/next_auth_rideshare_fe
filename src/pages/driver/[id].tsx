@@ -5,11 +5,10 @@ import {useSession} from "next-auth/react"
 import styles from "@/components/trip/history.module.css";
 import {GoogleMap, MarkerF, useLoadScript} from "@react-google-maps/api";
 import * as dotenv from 'dotenv'
-import {log} from "util";
 
 export async function getStaticPaths() {
 
-    const filepath = path.join(process.cwd(), 'file', 'driver', 'driver.json')
+    const filepath = path.join(process.cwd(), 'asset', 'driver', 'driver.json')
     const data_string = await fs.readFile(filepath, "utf8")
     const data_string_obj = JSON.parse(data_string)
     const driver_path = []
@@ -21,7 +20,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(prop_params: { params: { id: string } }) {
     const id = prop_params.params.id
-    const filepath = path.join(process.cwd(), 'file', 'driver', 'driver.json')
+    const filepath = path.join(process.cwd(), 'asset', 'driver', 'driver.json')
     const data_string = await fs.readFile(filepath, "utf8")
     const data_string_obj = JSON.parse(data_string)
     let index = 0

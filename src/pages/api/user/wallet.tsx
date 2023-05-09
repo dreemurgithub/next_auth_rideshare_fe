@@ -4,7 +4,7 @@ import path from 'path';
 
 export default async function handler(req : NextApiRequest,res: NextApiResponse){
     if (req.method==='POST') {
-        const filepath = path.join(process.cwd(),'file','user','wallet.json')
+        const filepath = path.join(process.cwd(),'asset','user','wallet.json')
         const data_string = await fs.readFile(filepath,"utf8")
         const data_Json = JSON.parse(data_string)
         data_Json.push(req.body)
@@ -14,7 +14,7 @@ export default async function handler(req : NextApiRequest,res: NextApiResponse)
         return
     }
     if (req.method==='GET') {
-        const filepath = path.join(process.cwd(),'file','user','wallet.json')
+        const filepath = path.join(process.cwd(),'asset','user','wallet.json')
         const data_string = await fs.readFile(filepath,"utf8")
         res.status(200).send(data_string)
         return
