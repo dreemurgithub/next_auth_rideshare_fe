@@ -74,7 +74,7 @@ export default function Driver({driver}: {
             const item = {
                 id: driver.id,
                 price: driver.price,
-                road:(road_element&& road_element.value==='')? 0  : parseInt(road_element.value),
+                road:(road_element===null|| road_element.value==='')? 0  : parseInt(road_element.value),
                 user: any_session.user.email,
                 lat: location.latitude ,
                 long: location.latitude
