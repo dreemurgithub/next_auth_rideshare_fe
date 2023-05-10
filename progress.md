@@ -83,3 +83,17 @@ Dự kiến mai
 
 Dự kiến mai
  - Tiếp tục format và refactor, cố gắng theo dúng linting style yêu cầu
+
+### Ngày 10/5
+ - Update hầu hết theo các helper function tương tự như style
+   - Các function delete, add và read đã hoạt động ổn và compile hết lỗi
+   - Vẫn chưa dùng tương tác cho edit, do chưa sử dụng đến
+   - Cân nhắc không dùng Edit vì edit === thêm 1 record + xóa 1 record?
+ - Tiếp tục test hết lại tất cả các api/route và debug
+ - User đã có thể tạo request chuyến xe và hoàn tất chuyến xe, vẫn chưa thêm vào lịch sử đi của user
+
+Dự kiến mai
+ - Cố gắng hoàn thành các tương tác của user và driver
+   - Hoàn thành chuyến đi=> Lịch sử
+   - Chức năng booking lại chuyến cũ với tài xế đó
+ - Tiếp tục refactor và cleanup

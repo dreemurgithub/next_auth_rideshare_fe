@@ -23,7 +23,7 @@ export async function delete_File(role : string , filename : string , id: string
     const new_data_Json = data_Json.filter((el:any)=>el[idname]!==id)
     await fs.writeFile(filepath,JSON.stringify(new_data_Json))
     return new_data_Json
-//     TODO: TEst this
+//     TODO: TEst this. IT WORK!
 }
 
 export async function edit_File(role : string , filename : string , content: string ){

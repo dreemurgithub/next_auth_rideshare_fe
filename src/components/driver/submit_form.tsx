@@ -1,7 +1,6 @@
 import {GoogleMap, MarkerF, useLoadScript} from "@react-google-maps/api";
 import styles from "@/components/trip/history.module.css";
 import {submitRequest} from "@/utils/user_driver/submitRequest";
-
 function Gmap({location}: { location: null | { latitude: number, longitude: number } }) {
     const {isLoaded} = useLoadScript({
         googleMapsApiKey: process.env.GoogleAPI_key as string
@@ -31,8 +30,8 @@ export default function Driver_form({any_session, driver , location}:{
         latitude: number , longitude: number
     } | null
 }){
-    function user_submit(){
-        const driver_infor = {id: driver.id, price: driver.price}
+    async function user_submit(){
+        const driver_infor = {driver: driver.id, price: driver.price}
         if(location!==null) submitRequest(any_session,driver_infor,location)
     }
     return <>
