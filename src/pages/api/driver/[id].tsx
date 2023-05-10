@@ -12,6 +12,7 @@ export default async function handler(req : NextApiRequest,res: NextApiResponse)
 
         res.status(200).send(req.body)
         return
+        // Form for new Driver is in driver/index, not here, unused route
     }
     if (req.method==='GET') {
         // const filepath = path.join(process.cwd(),'asset','driver','driver.json')

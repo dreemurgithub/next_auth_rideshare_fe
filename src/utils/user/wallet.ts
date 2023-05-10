@@ -22,3 +22,15 @@ export async function add_card(){
     })
     return response.json()
 }
+export async function removeCard(card:{ creditnumber: string}){
+    const res = await fetch(Wallet_request,{
+        method:'PUT',
+        body: JSON.stringify({creditnumber: card.creditnumber}),
+        headers : {
+            "Content-Type": "application/json",
+        },
+        mode:'same-origin',
+        credentials: 'same-origin'
+    })
+    return res.json()
+}

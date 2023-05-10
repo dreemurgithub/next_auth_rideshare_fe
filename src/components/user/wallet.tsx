@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import styles from './style.module.css'
-import {add_card} from "@/utils/user/wallet";
+import {add_card , removeCard} from "@/utils/user/wallet";
 import {Wallet_request} from "@/constant";
 export default function Wallet() {
     const [wallet, setwallet] = useState([])
@@ -9,30 +9,15 @@ export default function Wallet() {
             .then(res => res.json())
             .then(data => setwallet(data))
     }, [])
+    async function add_card_state(){
+        const new_state = await add_card()
+        setwallet(new_state)
+    }
 
-    // function add_card() {
-    //     const name_input: HTMLInputElement | null = document.querySelector('input#name')
-    //     const creditNumber_input: HTMLInputElement | null = document.querySelector('input#creditNumber')
-    //     const Month_input: HTMLInputElement | null = document.querySelector('select#ccmonth')
-    //     const year_input: HTMLInputElement | null = document.querySelector('select#ccyear')
-    //     const cvv_input: HTMLInputElement | null = document.querySelector('input#cvv')
-    //     const new_card = {
-    //         creditnumber: (creditNumber_input)? creditNumber_input.value : null,
-    //         expM: (Month_input)? parseInt(Month_input.value) : null,
-    //         expY: (year_input)? parseInt(year_input.value)  : null,
-    //         name: (name_input)? name_input.value : null ,
-    //         CVV : (cvv_input)? parseInt(cvv_input.value) : null
-    //     }
-    //     fetch('/api/user/wallet',{
-    //         method:'POST',
-    //         body : JSON.stringify(new_card),
-    //         mode: 'same-origin',
-    //         headers : {
-    //             "Content-type" : "application/json"
-    //         }
-    //     }).then(res=>res.json())
-    //     alert(JSON.stringify(new_card))
-    // }
+    async function remove_card_state(card:{ creditnumber: string}){
+        const new_card_remove = await removeCard(card)
+        setwallet(new_card_remove)
+    }
 
 
     return <>
@@ -120,7 +105,7 @@ export default function Wallet() {
 
                             </div>
                             <div className="card-footer">
-                                <button className="btn btn-sm btn-primary float-right" type="submit" onClick={add_card}>
+                                <button className="btn btn-sm btn-primary float-right" type="submit" onClick={add_card_state}>
                                     <i className="mdi mdi-gamepad-circle"></i> Save
                                 </button>
                                 <button className="btn btn-sm btn-danger" type="reset">
@@ -137,7 +122,7 @@ export default function Wallet() {
             {wallet.map((el: any , index:number) => <div className={'card border'} key={index}>
                 <div className={styles.card_cvv}>
                     <h4 className={'btn btn-dark'}>{el.name}</h4>
-                    <h4 className={'btn btn-outline-danger'}>Remove card</h4>
+                    <h4 className={'btn btn-outline-danger'} onClick={()=>remove_card_state(el)}>Remove card</h4>
                 </div>
                 <div className={'card-body input-group flex-nowrap'}>
                     <input type="number" className={'form-control'} min='0'  />
