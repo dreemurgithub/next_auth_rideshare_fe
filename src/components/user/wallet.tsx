@@ -1,24 +1,23 @@
 import {useEffect, useState} from "react";
 import styles from './style.module.css'
-import {add_card , removeCard} from "@/utils/user/wallet";
-import {Wallet_request} from "@/constant";
+import {add_card , removeCard , read_card} from "@/utils/user/wallet";
 export default function Wallet() {
     const [wallet, setwallet] = useState([])
     useEffect(() => {
-        fetch(Wallet_request)
-            .then(res => res.json())
-            .then(data => setwallet(data))
+        async function read_c(){
+            const new_read = await read_card()
+            setwallet(new_read)
+        }
+        read_c()
     }, [])
     async function add_card_state(){
         const new_state = await add_card()
         setwallet(new_state)
     }
-
     async function remove_card_state(card:{ creditnumber: string}){
         const new_card_remove = await removeCard(card)
         setwallet(new_card_remove)
     }
-
 
     return <>
         <div id={'wallet'}>

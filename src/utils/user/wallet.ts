@@ -1,4 +1,9 @@
 import {Wallet_request} from "@/constant";
+
+export async function read_card(){
+    const res = await fetch(Wallet_request)
+    return res.json()
+}
 export async function add_card(){
     const name_input: HTMLInputElement | null = document.querySelector('input#name')
     const creditNumber_input: HTMLInputElement | null = document.querySelector('input#creditNumber')
