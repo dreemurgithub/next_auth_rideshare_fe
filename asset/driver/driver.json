@@ -1,47 +1,57 @@
 [
   {
-    "vehicle" : "Car",
+    "vehicle": "Car",
     "id": "lethanhdat1993",
     "email": "lethanhdat1993@gmail.com",
-    "url" : "https://www.publicdomainpictures.net/pictures/60000/velka/old-rusty-car.jpg",
-    "avatar" :"https://as2.ftcdn.net/jpg/02/85/06/87/220_F_285068780_tlWnar58CMkJvq5WqYhVh57ICdIwrF4b.jpg",
-    "price" : 20000,
-    "rating": 4.3
+    "url": "https://www.publicdomainpictures.net/pictures/60000/velka/old-rusty-car.jpg",
+    "avatar": "https://as2.ftcdn.net/jpg/02/85/06/87/220_F_285068780_tlWnar58CMkJvq5WqYhVh57ICdIwrF4b.jpg",
+    "price": 20000,
+    "rating": 4.3,
+    "latitude": 16.06128014179922,
+    "longitude": 108.2274948567431
   },
   {
-    "vehicle" : "Car",
+    "vehicle": "Car",
     "id": "lethanhdat1994",
     "email": "lethanhdat1994@gmail.com",
-    "url" : "https://live.staticflickr.com/5526/9059042461_1f7d79e8a5_n.jpg",
-    "avatar" : "https://as2.ftcdn.net/jpg/02/84/07/07/220_F_284070736_rrQmdKq5C8Mlk1ryOgDVYz0K3dcfipOP.jpg",
-    "price" :  20000,
-    "rating": 4.3
+    "url": "https://live.staticflickr.com/5526/9059042461_1f7d79e8a5_n.jpg",
+    "avatar": "https://as2.ftcdn.net/jpg/02/84/07/07/220_F_284070736_rrQmdKq5C8Mlk1ryOgDVYz0K3dcfipOP.jpg",
+    "price": 20000,
+    "rating": 4.3,
+    "latitude": 16.06128014179922,
+    "longitude": 108.2274948567431
   },
   {
-    "vehicle" : "Car",
+    "vehicle": "Car",
     "id": "lethanhdat1995",
     "email": "lethanhdat1995@gmail.com",
-    "url" : "https://live.staticflickr.com/3254/2867328662_7deee9b61b_n.jpg",
-    "avatar" : "https://c.pxhere.com/photos/94/00/race_car_driver_man_1910_steering_wheel_vintage_photo_lifestyle-625427.jpg!s",
-    "price" :  20000,
-    "rating": 4.3
+    "url": "https://live.staticflickr.com/3254/2867328662_7deee9b61b_n.jpg",
+    "avatar": "https://c.pxhere.com/photos/94/00/race_car_driver_man_1910_steering_wheel_vintage_photo_lifestyle-625427.jpg!s",
+    "price": 20000,
+    "rating": 4.3,
+    "latitude": 16.06128014179922,
+    "longitude": 108.2274948567431
   },
   {
-    "vehicle" : "Car",
+    "vehicle": "Car",
     "id": "lethanhdat1996",
     "email": "lethanhdat1996@gmail.com",
-    "url" : "https://live.staticflickr.com/4373/37020776121_99f3f9bfbe_n.jpg",
-    "avatar" : "https://as2.ftcdn.net/jpg/02/09/02/99/220_F_209029903_Urf3MWX3jpn4rjRgZjmEpPMwKRUdziAJ.jpg",
-    "price" :  20000,
-    "rating": 4.3
+    "url": "https://live.staticflickr.com/4373/37020776121_99f3f9bfbe_n.jpg",
+    "avatar": "https://as2.ftcdn.net/jpg/02/09/02/99/220_F_209029903_Urf3MWX3jpn4rjRgZjmEpPMwKRUdziAJ.jpg",
+    "price": 20000,
+    "rating": 4.3,
+    "latitude": 16.06128014179922,
+    "longitude": 108.2274948567431
   },
   {
-    "vehicle" : "Car",
+    "vehicle": "Car",
     "id": "lethanhdat1997",
     "email": "lethanhdat1997@gmail.com",
-    "url" : "https://live.staticflickr.com/334/19916571969_3099f48642_n.jpg",
-    "avatar" : "https://universityinnovation.org/images/8/89/Kenneth-brewer-large_profile_photo_opt.png",
-    "price" :  20000,
-    "rating": 4.3
+    "url": "https://live.staticflickr.com/334/19916571969_3099f48642_n.jpg",
+    "avatar": "https://universityinnovation.org/images/8/89/Kenneth-brewer-large_profile_photo_opt.png",
+    "price": 20000,
+    "rating": 4.3,
+    "latitude": 16.06128014179922,
+    "longitude": 108.2274948567431
   }
 ]

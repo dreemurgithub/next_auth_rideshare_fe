@@ -1,7 +1,7 @@
 import {GoogleMap, MarkerF, useLoadScript} from "@react-google-maps/api";
 import styles from "@/components/trip/history.module.css";
 import {submitRequest} from "@/utils/user_driver/submitRequest";
-function Gmap({location}: { location: null | { latitude: number, longitude: number } }) {
+export function Gmap({location}: { location: null | { latitude: number, longitude: number } }) {
     const {isLoaded} = useLoadScript({
         googleMapsApiKey: process.env.GoogleAPI_key as string
     })
@@ -15,7 +15,7 @@ function Gmap({location}: { location: null | { latitude: number, longitude: numb
         <h1>Trip page</h1>
 
     </>
-    if (isLoaded && location !== null) return <GoogleMap zoom={10}
+    if (isLoaded && location !== null) return <GoogleMap zoom={15}
                                                          center={{lat: location.latitude, lng: location.longitude}}
                                                          mapContainerClassName={styles.map_container}>
         <MarkerF position={{lat: location.latitude, lng: location.longitude}}/>

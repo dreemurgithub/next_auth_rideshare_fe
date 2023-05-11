@@ -2,9 +2,9 @@ import {useEffect, useState} from "react";
 import {useSession} from "next-auth/react"
 import * as dotenv from 'dotenv'
 import {read_File, Add_File} from "@/utils/file_asset";
-import Driver_form from "@/components/driver/submit_form";
+import Driver_form,{Gmap} from "@/components/user_driver/submit_form";
 import {read_state_driver} from "@/utils/driver/read_driver";
-import Request from "@/components/driver/request";
+import Request from "@/components/user_driver/request";
 export async function getStaticPaths() {
     const data_string = await read_File('driver', 'driver.json')
     const data_string_obj = JSON.parse(data_string)
@@ -29,6 +29,7 @@ export async function getStaticProps(prop_params: { params: { id: string } }) {
 export default function Driver({driver}: {
     driver: {
         vehicle: string, id: string, url: string, price: number, rating: number, avatar: string, email: string
+        ,latitude : number , longitude : number
     }
 }) {
     const {data: session, status} = useSession()
@@ -57,6 +58,7 @@ export default function Driver({driver}: {
 
     return <>
         <p><b>Driver infor: </b> {JSON.stringify(driver)}</p>
+        <Gmap location={{latitude: driver.latitude, longitude : driver.longitude}} />
         <p><b>The user session: </b> {JSON.stringify(session)}</p>
         <p><b>The location: </b> {JSON.stringify(location)}</p>
         <button onClick={getLocation}>Get location</button>
