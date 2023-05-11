@@ -16,6 +16,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(prop_params: { params: { id: string } }) {
+
     const id = prop_params.params.id
     const data_string = await read_File('driver', 'driver.json')
     const data_string_obj = JSON.parse(data_string)
@@ -49,17 +50,22 @@ export default function Driver({driver}: {
     useEffect(() => {
         async function readState_request() {
             const new_state_request = await read_state_driver(driver.id)
+            new_state_request.forEach((el : any)=> {
+                // if(any_session) el.viewer = any_session.user.email
+                console.log(any_session)
+            })
             setrequest(new_state_request)
         }
-        readState_request()
+
+        setTimeout(readState_request,1000)
 
         getLocation()
     }, [])
 
-    return <>
+    if(any_session!== null) return <>
         <p><b>Driver infor: </b> {JSON.stringify(driver)}</p>
         <Gmap location={{latitude: driver.latitude, longitude : driver.longitude}} />
-        <p><b>The user session: </b> {JSON.stringify(session)}</p>
+        <p><b>The user session: </b> {JSON.stringify(any_session)}</p>
         <p><b>The location: </b> {JSON.stringify(location)}</p>
         <button onClick={getLocation}>Get location</button>
         <div>
@@ -76,4 +82,5 @@ export default function Driver({driver}: {
         <p><b>Request from User: </b> {JSON.stringify(request)}</p>
         {request.map((el:any,index)=> Request(el,index) )}
     </>
+    else return null
 }

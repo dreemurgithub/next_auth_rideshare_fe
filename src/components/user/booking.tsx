@@ -9,7 +9,7 @@ export default function Booking() {
     const { data: session, status } = useSession()
     const [oldtrip, setoldtrip] = useState<any>([])
     const [request, setrequest] = useState([])
-
+    const any_session = session as any
     useEffect(() => {
         fetch(history_url_from_user_session)
             .then(res => res.json())
@@ -20,12 +20,14 @@ export default function Booking() {
             })
         async function readState_request() {
             const new_state_request = await read_user_request()
+            new_state_request.forEach((el : any)=>el.viewer = (any_session)? any_session.user.email : null)
+            // Viewer is for filter from session, only allow matching user to mutate
             setrequest(new_state_request)
         }
         readState_request()
 
     }, [])
-    return <>
+    if(any_session!== null) return <>
         <h3>Booking page</h3>
         <div className={'container text-center'}>
             <div className={'row'}>
@@ -35,6 +37,8 @@ export default function Booking() {
         </div>
         <p>{JSON.stringify(request)}</p>
         {request.map((el:any,index:number)=>Request(el,index))}
+
     </>
+    else return null
 
 }
