@@ -1,11 +1,9 @@
 export function Read_all_request_from_one_driver(driver_id : string){
     return `/api/request/${driver_id}`
 }
-export const Edit_request = '/api/request'  // We manage it by id
+export const read_add_remove_request = '/api/request'  // We manage it by id
 
-export function delete_request(){
-
-}
+export const move_request_to_history_put = 'api/edit_request'
 
 export const history_url_from_user_session = "/api/trip/old"
 

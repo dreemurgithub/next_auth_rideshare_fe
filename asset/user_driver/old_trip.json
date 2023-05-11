@@ -1,81 +1,79 @@
 [
   {
     "id": "1000",
-    "street" : "11 Lê Lợi",
+    "street": "11 Lê Lợi",
     "road": 11,
-    "city" : "Đà Nẵng",
+    "city": "Đà Nẵng",
     "latitude": 16.080925,
     "longitude": 108.219275,
-    "rating" : 3,
-    "driver" : "lethanhdat1993",
-    "user" : "datltfx18467@funix.edu.vn"
+    "rating": 3,
+    "driver": "lethanhdat1993",
+    "user": "datltfx18467@funix.edu.vn"
   },
   {
-    "id":  "1001",
-    "street" : "22 Phan Châu Trinh",
-    "road":  11,
-    "city" : "Đà Nẵng",
+    "id": "1001",
+    "street": "22 Phan Châu Trinh",
+    "road": 11,
+    "city": "Đà Nẵng",
     "latitude": 16.068185862166626,
     "longitude": 108.2200664801261,
-    "rating" :  3,
-    "driver" : "lethanhdat1993",
-    "user" : "datltfx18467@funix.edu.vn"
+    "rating": 3,
+    "driver": "lethanhdat1993",
+    "user": "datltfx18467@funix.edu.vn"
   },
   {
-    "id":  "1002",
-    "street" : "7 Phan Đăng Lưu",
-    "road":  11,
-    "city" : "Đà Nẵng",
+    "id": "1002",
+    "street": "7 Phan Đăng Lưu",
+    "road": 11,
+    "city": "Đà Nẵng",
     "latitude": 16.0376735101888,
     "longitude": 108.22314091081459,
-    "rating" :  2,
-    "driver" : "lethanhdat1993",
-    "user" : "datltfx18467@funix.edu.vn"
-
+    "rating": 2,
+    "driver": "lethanhdat1993",
+    "user": "datltfx18467@funix.edu.vn"
   },
   {
-    "id":  "1003",
-    "street" : "13 Nguyễn Tất Thành",
-    "road":  11,
-    "city" : "Đà Nẵng",
+    "id": "1003",
+    "street": "13 Nguyễn Tất Thành",
+    "road": 11,
+    "city": "Đà Nẵng",
     "latitude": 16.088207266079483,
     "longitude": 108.15485249809294,
-    "rating" :  2,
-    "driver" : "lethanhdat1993",
-    "user" : "datltfx18467@funix.edu.vn"
+    "rating": 2,
+    "driver": "lethanhdat1993",
+    "user": "datltfx18467@funix.edu.vn"
   },
   {
-    "id":  "1004",
-    "street" : "800 Nguyễn Tất Thành",
-    "road":  11,
-    "city" : "Đà Nẵng",
+    "id": "1004",
+    "street": "800 Nguyễn Tất Thành",
+    "road": 11,
+    "city": "Đà Nẵng",
     "latitude": 16.08618968097369,
     "longitude": 108.21440365314349,
-    "rating" :  4,
-    "driver" : "lethanhdat1993",
-    "user" : "datltfx18467@funix.edu.vn"
+    "rating": 4,
+    "driver": "lethanhdat1993",
+    "user": "datltfx18467@funix.edu.vn"
   },
   {
-    "id":  "1005",
-    "street" : "500 Ngô Quyền",
-    "road":  11,
-    "city" : "Đà Nẵng",
+    "id": "1005",
+    "street": "500 Ngô Quyền",
+    "road": 11,
+    "city": "Đà Nẵng",
     "latitude": 16.08551655924147,
     "longitude": 108.23906536925641,
-    "rating" :  4,
-    "driver" : "lethanhdat1993",
-    "user" : "datltfx18467@funix.edu.vn"
+    "rating": 4,
+    "driver": "lethanhdat1993",
+    "user": "datltfx18467@funix.edu.vn"
   },
   {
-    "id":  "1006",
-    "street" : "100 Ngô Quyền",
-    "road":  11,
-    "city" : "Đà Nẵng",
+    "id": "1006",
+    "street": "100 Ngô Quyền",
+    "road": 11,
+    "city": "Đà Nẵng",
     "latitude": 16.093010877074082,
     "longitude": 108.24339859547142,
-    "rating" :  5,
-    "driver" : "lethanhdat1993",
-    "user" : "datltfx18467@funix.edu.vn"
+    "rating": 5,
+    "driver": "lethanhdat1993",
+    "user": "datltfx18467@funix.edu.vn"
   }
-
 ]
