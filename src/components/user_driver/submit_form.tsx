@@ -55,11 +55,11 @@ export default function Driver_form({any_session, driver , location}:{
                 <input type="number" className="form-control" id='road' min={0}/>
             </div>
             <div className="mb-3">
-                <label htmlFor="exampleInputPassword1" className="form-label">Address</label>
-                <input type="text" className="form-control" value={'10 Phan Châu Trinh'}/>
+                <label className="form-label">Address</label>
+                <input type="text" className="form-control"/>
             </div>
             <div className="mb-3">
-                <label htmlFor="exampleInputPassword1" className="form-label">Address</label>
+                <label htmlFor="exampleInputPassword1" className="form-label">City</label>
                 <input type="text" className="form-control" value={'Đà Nẵng'}/>
             </div>
 
