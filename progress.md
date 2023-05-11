@@ -97,3 +97,16 @@ Dự kiến mai
    - Hoàn thành chuyến đi=> Lịch sử
    - Chức năng booking lại chuyến cũ với tài xế đó
  - Tiếp tục refactor và cleanup
+
+### Ngày 11/5
+ - Tạo hoàn chỉnh chức năng user request, chưa style
+   - User đã có thể thấy được các request của chính mình đặt, request của user có thể rate/ hủy / hoàn thành được
+   - Request của tài xế chỉ thấy, không thể rate / hủy / hoàn thành được
+ - Reformat lại driver form để có thể đáp ứng các yêu cầu khi tạo request mới
+   - Kéo Rating state và thông tin tài xế qua fetch request
+   - Filter dựa vào session để chỉ cho phép user thao tác với chuyến đi
+   - Chuẩn bị cho chức năng booking lại từ lịch sử chuyến đi
+
+Dự kiến mai
+ - Cố gắng hoàn thành hết tất cả các tương tác của user và driver
+ - Bắt đầu format các component để style frontend
