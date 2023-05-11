@@ -45,11 +45,9 @@ export function Delete_request_withID(id: string){
 
 export function move_request_to_history(request : {
     id: string , street: string, driver : string , price: number , road: number , user: string , lat: number , long: number
-
+,rating : number | null
 }){
-    window.alert('Rating now!')
     const any_request = request as any
-    any_request.rating = 1
     fetch(move_request_to_history_put,{
         method:'PUT',
         body: JSON.stringify(any_request),
