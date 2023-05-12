@@ -1,0 +1,36 @@
+.avatar {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+.driver {
+    width: 400px;
+    background-color: whitesmoke;
+    text-align: center;
+}
+
+.small_card {
+    display: flex;
+    /*grid-template-columns: 2fr 1fr;*/
+    justify-content: space-between;
+    border: 1px solid black;
+    padding: 0.3em;
+    border-radius: 0.3em;
+}
+
+.small_card >div> svg  {
+    margin-top: -5px;
+    margin-left: 10px;
+}
+.small_card >div> span  {
+    margin-left: 50px;
+}
+.small_card >svg {
+    margin-top: 5px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 450px 1fr;
+}
