@@ -1,4 +1,28 @@
 .driver_form {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    /*grid-template-columns: 1fr 1fr;*/
+}
+@media (width<768px) and (width>576px){
+    .driver_form {
+        grid-template-columns: 1fr 1fr;
+
+    }
+}
+
+@media (width<768px) {
+    .driver_form {
+
+    }
+}
+@media (width<1200px) and (width>768px) {
+    .driver_form {
+        grid-template-columns: 1fr 1fr;
+
+    }
+}
+@media (width>1200px) {
+    .driver_form {
+        grid-template-columns: 1fr 1fr;
+
+    }
 }

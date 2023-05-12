@@ -1,5 +1,6 @@
 .map_container {
-    width : 400px;
+    /*width : 400px;*/
     height: 200px;
-    max-width: 100%;
+    /*max-width: 100%;*/
+    width: 100%;
 }
