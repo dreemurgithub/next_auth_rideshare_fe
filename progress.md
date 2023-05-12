@@ -110,3 +110,16 @@ Dự kiến mai
 Dự kiến mai
  - Cố gắng hoàn thành hết tất cả các tương tác của user và driver
  - Bắt đầu format các component để style frontend
+
+### Ngày 12/5
+ - Hoàn thành chức năng book lại dựa theo localstorage
+   - Debug các type error của localstorage mà compiler báo
+   - Rebook đi vào lại Driver cũ, với quãng đường và địa chỉ cũ
+ - Format layout của /user theo và cac driver static page
+   - Design layout để bắt đầu responsive cho /user và các driver page
+   - Sử dụng thêm thư viện Material UI component để edit rating và style dễ hơn
+   - Design sidebar cho driver với bootstrap icon
+
+Dự kiến mai
+ - Design các page khác và thành phần còn lại, cũng như đợi góp ý nếu có về cách tổ chức code
+ - Clean up 1 số helper function, API route và fake data không dùng tới sau khi gần hoàn thành 
