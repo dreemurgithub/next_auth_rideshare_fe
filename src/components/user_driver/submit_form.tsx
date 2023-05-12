@@ -4,6 +4,8 @@ import {submitRequest} from "@/utils/user_driver/submitRequest";
 import {useEffect} from "react";
 import STYLES from './style.module.css'
 import Link from 'next/link'
+import {signIn, signOut} from "next-auth/react"
+
 
 export function Gmap({location}: { location: null | { latitude: number, longitude: number } }) {
     const {isLoaded} = useLoadScript({
@@ -58,13 +60,14 @@ export default function Driver_form({any_session, driver, location}: {
 
     return <>
         <div className={'col-sm-12 col-md-6 col-lg-8'}>
+
             <div className={STYLES.driver_form}>
 
                 <div className="input-group mb-3">
                     <input type="text" className="form-control"
                            readOnly={true} disabled={true} value={driver.id}/>
                     <div className="input-group-append">
-                        <span className="input-group-text" id="basic-addon2">Driver</span>
+                        <span className="input-group-text">Driver</span>
                     </div>
                 </div>
                 <div className="input-group mb-3">
@@ -78,14 +81,14 @@ export default function Driver_form({any_session, driver, location}: {
                     <input type="text" className="form-control"
                            value={driver.price} readOnly={true} disabled={true}/>
                     <div className="input-group-append">
-                        <span className="input-group-text" id="basic-addon2">Price</span>
+                        <span className="input-group-text">Price</span>
                     </div>
                 </div>
                 <div className="input-group mb-3">
                     <input type="text" className="form-control"
                            disabled={true} value={any_session ? any_session.user.email : ''}/>
                     <div className="input-group-append">
-                        <span className="input-group-text" id="basic-addon2">Email</span>
+                        <span className="input-group-text">Email</span>
                     </div>
                 </div>
 
@@ -104,13 +107,25 @@ export default function Driver_form({any_session, driver, location}: {
                     </div>
                 </div>
             </div>
-            {(any_session)? <div className={STYLES.driver_form}>
+            {(any_session) ? <div className={STYLES.driver_form}>
                 <Gmap location={location}/>
-                <div>
-                    <button type="submit" className="btn btn-primary" onClick={user_submit}>Submit</button>
-                    <Link href={'/user'} className="btn btn-outline-dark">User Page</Link>
+
+                <div style={{textAlign: 'center'}}>
+                    <img
+                        src="https://www.publicdomainpictures.net/pictures/360000/velka/katze-katzchen-niedlich-vintage-1595638359oOf.jpg"
+                        style={{width: '150px', height: '150px', borderRadius: '50%'}}/>
+                    <h5>{any_session.user.email}</h5>
+                    <div className="btn-group" style={{width: '90%'}}>
+                        <button type="submit" className="btn btn-primary" onClick={user_submit}>Submit</button>
+                        <Link href={'/user'} className="btn btn-success" target='_blank'>User</Link>
+                        <button className="btn btn-outline-dark" onClick={() => signOut()}>Signout</button>
+                    </div>
                 </div>
-            </div> : null}
+
+            </div> : <div style={ {display:'flex',justifyContent:'center'} }>
+                <button className="btn btn-outline-dark" onClick={() => signIn()}>Signin</button>
+            </div>
+            }
 
         </div>
     </>

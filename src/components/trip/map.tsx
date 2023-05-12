@@ -20,20 +20,14 @@ export default function Map({lat, long, street, driver, rating, city, user,road,
         <h1>Trip page</h1>
 
     </>
-    else return <div className={'col-sm-12 col-md-6 col-lg-4 card'}>
+    else return <div className={'col-sm-12 col-md-6 col-lg-4 col-xxl-3 border'}>
         <GoogleMap zoom={15} center={{lat: lat, lng: long}}
-                   mapContainerClassName={styles.map_container + ' w-100 card-img-top'}>
+                   mapContainerClassName={styles.map_container}>
             <MarkerF position={{lat: lat, lng: long}}/>
         </GoogleMap>
         <ul className={'list-group list-group-flush'}>
-            {/*<li className={'list-group-item'}>Customer: <b>{user}</b></li>*/}
             <li className={'list-group-item'}>To: <b>{street} {city}</b></li>
-            {/*<li className={'list-group-item'}>Driver: <b>{driver}</b> : <b>{(road*price).toLocaleString()} VND</b></li>*/}
-            {/*<div className={'list-group-item'} style={{ display:'grid',gridTemplateColumns:'1fr 1fr' }}>*/}
-            {/*    <span className={''}>{(road*price).toLocaleString()} VND</span>*/}
-            {/*    <span className={''}>Driver:{driver}</span>*/}
-            {/*</div>*/}
-            <div className={'list-group-item'} style={{ display:'grid',gridTemplateColumns:'1fr 1fr 1fr' }}>
+            <div className={'list-group-item'} style={{ display:'flex',justifyContent:'space-around' }}>
                 <span className={'btn'}>{(road*price).toLocaleString()}đ</span>
                 <span className={'btn'}>{rating}/5</span>
                 <span onClick={rebook} className={'btn btn-success'}>ReBook</span>
