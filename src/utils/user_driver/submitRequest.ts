@@ -48,6 +48,7 @@ export function move_request_to_history(request : {
 ,rating : number | null
 }){
     const any_request = request as any
+    if (any_request.viewer!==undefined) delete any_request.viewer
     fetch(move_request_to_history_put,{
         method:'PUT',
         body: JSON.stringify(any_request),

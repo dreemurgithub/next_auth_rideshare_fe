@@ -32,7 +32,7 @@ export default function Booking() {
         <div className={'container text-center'}>
             <div className={'row'}>
                 {oldtrip.map((el: any, index: number) =>
-                    <Map latitude={el.latitude} longitude={el.longitude} driver={el.driver} street={el.street} city={el.city} rating={el.rating} user={el.user} key={index}/>)}
+                    <Map lat={el.lat} long={el.long} driver={el.driver} street={el.street} city={el.city} rating={el.rating} user={el.user} key={index} price={el.price} road={el.road}/>)}
             </div>
         </div>
         <p>{JSON.stringify(request)}</p>

@@ -1,6 +1,7 @@
 import {GoogleMap, MarkerF, useLoadScript} from "@react-google-maps/api";
 import styles from "@/components/trip/history.module.css";
 import {submitRequest} from "@/utils/user_driver/submitRequest";
+import {useEffect} from "react";
 export function Gmap({location}: { location: null | { latitude: number, longitude: number } }) {
     const {isLoaded} = useLoadScript({
         googleMapsApiKey: process.env.GoogleAPI_key as string
@@ -30,6 +31,21 @@ export default function Driver_form({any_session, driver , location}:{
         latitude: number , longitude: number
     } | null
 }){
+    useEffect(()=>{
+        const trip : HTMLInputElement | null = document.querySelector('#road')
+        const address : HTMLInputElement  | null = document.querySelector('#address')
+        const trip_local = localStorage.getItem('trip') as any
+        const address_local = localStorage.getItem('address') as any
+        if(trip&&trip_local) {
+            trip.value = trip_local ? JSON.parse(trip_local) : ''
+        }
+        if(address&&address_local) {
+            address.value = address_local ? JSON.parse(address_local) : ''
+        }
+        localStorage.removeItem('trip')
+        localStorage.removeItem('address')
+    //     in dev enviroment, where it would render twice, this will override the value to '', after compiled it will work
+    },[])
     async function user_submit(){
         const driver_infor = {driver: driver.id, price: driver.price}
         if(location!==null) submitRequest(any_session,driver_infor,location)
@@ -56,7 +72,7 @@ export default function Driver_form({any_session, driver , location}:{
             </div>
             <div className="mb-3">
                 <label className="form-label">Address</label>
-                <input type="text" className="form-control"/>
+                <input type="text" className="form-control" id='address'/>
             </div>
             <div className="mb-3">
                 <label htmlFor="exampleInputPassword1" className="form-label">City</label>
