@@ -94,9 +94,10 @@ a {
 }
 @media (width<991px){
   #navbar {
-    /*width: 25em;*/
+    /*width: 100vw;*/
     /*padding-bottom: 60vh;*/
     text-align: center;
+
   }
   #navbar>div{
     margin-left: 1em;

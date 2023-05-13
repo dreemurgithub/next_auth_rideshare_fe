@@ -6,32 +6,42 @@ export default function Navbar() {
     const [state, setState] = useState({
         bs_theme: 'dark',
         classN: 'bg-dark',
-        height: '0vh'
+        height: '0vh',
+        width:'100vw'
     })
     useEffect(() => {
         if (window.screen.width < 993) setState({
             bs_theme: '',
             classN: '',
-            height: '0vh'
+            height: '0vh',
+            width:'100vw'
+
         })
+        // else setState({
+        //     bs_theme: '',
+        //     classN: '',
+        //     height: '0vh'
+        // })
     }, [])
 
     return <>
         <nav id={'navbar'} className={`navbar navbar-expand-lg bg-body-tertiary ${state.bs_theme}`}
-             data-bs-theme={state.bs_theme}>
+             data-bs-theme={state.bs_theme} style={ {width:state.width} }>
             <div>
-                <div className={'container-fluid '}>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
+                <div className={'container-fluid '} >
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" style={{ backgroundColor:'transparent'} }
                             data-bs-target="#navbar-nav" data-bs-theme={state.bs_theme} onClick={() => {
                         if (state.bs_theme !== 'dark') setState({
                             bs_theme: 'dark',
                             classN: 'bg-dark',
-                            height: '80vh'
+                            height: '80vh',
+                            width: '40vw'
                         })
                         if (state.bs_theme !== '') setState({
                             bs_theme: '',
                             classN: '',
-                            height: '0vh'
+                            height: '0vh',
+                            width: '100vw'
                         })
                     }}
                             aria-controls="navbar-nav" aria-expanded="false" aria-label="Toggle navigation">

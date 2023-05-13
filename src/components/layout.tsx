@@ -3,7 +3,7 @@ import Navbar from "@/components/navbar";
 export default function Layout({children}:any){
     return <>
         <Navbar />
-        <div style={ {height:'5em'} }></div>
+        <div style={ {height:'3em'} }></div>
         {children}
         <Footer />
     </>
