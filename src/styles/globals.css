@@ -1,5 +1,5 @@
 :root {
-  --max-width: 1100px;
+  /*--max-width: 1100px;*/
   --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
@@ -68,11 +68,42 @@ a {
   text-decoration: none;
 }
 
+/*custom design*/
 
-
-#footer ,#navbar {
+#footer {
   background-color: whitesmoke;
+  /*text-align: center;*/
 }
+#navbar {
+  position: fixed;
+  top:0;
+  z-index: 100;
+
+}
+@media (width>991px){
+  #navbar {
+    display: flex;
+    justify-content: center;
+    width: 105vw;
+  }
+  #navbarNav {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+}
+@media (width<991px){
+  #navbar {
+    /*width: 25em;*/
+    /*padding-bottom: 60vh;*/
+
+  }
+  #navbar>div {
+    margin-left: 1em;
+
+  }
+}
+
 #wrapper {
   margin: 0 auto;
   width: 80vw;
