@@ -123,3 +123,10 @@ Dự kiến mai
 Dự kiến mai
  - Design các page khác và thành phần còn lại, cũng như đợi góp ý nếu có về cách tổ chức code
  - Clean up 1 số helper function, API route và fake data không dùng tới sau khi gần hoàn thành 
+
+### Ngày 13/5
+ - Format cho Navbar
+ - Update Navbar state cho mobile
+   - PC sẽ hiển thị trên top
+   - Mobile hiển thị bên trái
+ - Clean up các sign in/out ở các page khác, để hết về navbar
