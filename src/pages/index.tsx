@@ -7,7 +7,7 @@ export default function Home() {
   return <>
     <h1>Hello home</h1>
     <p>State of login: {JSON.stringify(session)} </p>
-    <button onClick={()=>signIn()}>Sign in</button>
-    <button onClick={()=>signOut()}>Sign out</button>
+    {/*<button onClick={()=>signIn()}>Sign in</button>*/}
+    {/*<button onClick={()=>signOut()}>Sign out</button>*/}
   </>
 }

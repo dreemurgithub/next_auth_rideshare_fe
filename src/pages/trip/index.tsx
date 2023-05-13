@@ -49,16 +49,16 @@ export default function Trip() {
         {/*<p>{string_src}</p>*/}
         {/*<Map_google string_src ={string_src}/>*/}
     </>
-    if (!isLoaded && session) return <>
+    if (!isLoaded ) return <>
         <h3>Please wait for loading, and sign in</h3>
     </>
-    if (isLoaded && !session) return <>
+    if (isLoaded ) return <>
         <p>Please sign in</p>
-        <button onClick={()=>signIn()}>Sign in</button>
+        {/*<button onClick={()=>signIn()}>Sign in</button>*/}
 
 
     </>
-    if (isLoaded && session) return <>
+    if (isLoaded) return <>
         <div>Map</div>
         <button onClick={()=>signOut()}>Sign out</button>
 

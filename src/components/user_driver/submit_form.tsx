@@ -118,12 +118,12 @@ export default function Driver_form({any_session, driver, location}: {
                     <div className="btn-group" style={{width: '90%'}}>
                         <button type="submit" className="btn btn-primary" onClick={user_submit}>Submit</button>
                         <Link href={'/user'} className="btn btn-success" target='_blank'>User</Link>
-                        <button className="btn btn-outline-dark" onClick={() => signOut()}>Signout</button>
+                        {/*<button className="btn btn-outline-dark" onClick={() => signOut()}>Signout</button>*/}
                     </div>
                 </div>
 
             </div> : <div style={ {display:'flex',justifyContent:'center'} }>
-                <button className="btn btn-outline-dark" onClick={() => signIn()}>Signin</button>
+                {/*<button className="btn btn-outline-dark" onClick={() => signIn()}>Signin</button>*/}
             </div>
             }
 

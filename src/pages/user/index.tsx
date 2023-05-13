@@ -16,6 +16,6 @@ export default function User(){
     </>
     else return <>
         <h2>Please Sign in to use this</h2>
-        <button onClick={()=>signIn()}>Sign in</button>
+        {/*<button onClick={()=>signIn()}>Sign in</button>*/}
     </>
 }

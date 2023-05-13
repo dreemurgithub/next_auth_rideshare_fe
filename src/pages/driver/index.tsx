@@ -16,13 +16,13 @@ export default function Driver({server_data} : {server_data : any  } ){
 
     if(session) return <>
         <h2>Driver page</h2>
-        <button onClick={()=>signOut()}>Sign out</button>
+        {/*<button onClick={()=>signOut()}>Sign out</button>*/}
         <p>{JSON.stringify(server_data)}</p>
         <p>{JSON.stringify(session)}</p>
     </>
     else return <>
         <h1>Please Sign in to use this</h1>
-        <button onClick={()=>signIn()}>Sign in</button>
+        {/*<button onClick={()=>signIn()}>Sign in</button>*/}
 
     </>
 }
