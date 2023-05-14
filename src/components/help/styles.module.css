@@ -1,0 +1,6 @@
+.img_tilt {
+    /*box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px 0px;*/
+    /*right : calc(100% - 64px + 19px) ;*/
+    /*left : calc(100% - 64px + 19px) ;*/
+    transform: rotate(25deg);
+}
