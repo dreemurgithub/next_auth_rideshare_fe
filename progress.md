@@ -130,3 +130,12 @@ Dự kiến mai
    - PC sẽ hiển thị trên top
    - Mobile hiển thị bên trái
  - Clean up các sign in/out ở các page khác, để hết về navbar
+
+### Ngày 14/5
+ - Bắt đầu code và design Help page theo style 1 số website lớn
+ - Tạo homepage theo design của 1 số website lớn
+ - Bắt đầu tạo chat box giống như facebook message(chưa hoàn thành)
+
+Dự kiến mai
+- Tiếp tục hoàn thành design và đợi góp ý
+- Clean up các component và fake data cũng như API không dùng đến để hoàn thiện sản phẩm 
