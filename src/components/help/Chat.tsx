@@ -40,9 +40,11 @@ export default function Chat() {
             chat_inbox.value=''
         }
         const scroll = document.querySelector('#bottom_chat')
-        if(scroll) {
-            scroll.scrollTop = scroll.scrollHeight
-        }
+        setTimeout(()=>{
+            if (scroll) {
+                scroll.scrollTop = scroll.scrollHeight
+            }
+        },500)
     }
     useEffect(() => {
 
