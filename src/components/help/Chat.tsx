@@ -32,20 +32,32 @@ export default function Chat() {
     const [fake_List, setlist] = useState([{time: 1684138114000, text: 'helper hello 1', user: 'helper'}])
     function send_message(){
         const chat_inbox  : HTMLInputElement | null = document.querySelector('input#chat_user')
+
         if(chat_inbox&&chat_inbox.value!== ''){
             const new_fake_chat = [{time: new Date().getTime() , text:chat_inbox.value , user:'me'},...fake_List]
             new_fake_chat.sort((a : {time: number},b:{time : number} )=> a.time-b.time )
             setlist(new_fake_chat as any)
             chat_inbox.value=''
         }
+        const scroll = document.querySelector('#bottom_chat')
+        if(scroll) {
+            scroll.scrollTop = scroll.scrollHeight
+        }
     }
     useEffect(() => {
+
         // const fake_chat  = []
         fake_chat_user.forEach((el) => fake_chat_helper.push(el))
         // fake_chat_helper.forEach((el) => fake_chat.push(el))
         fake_chat_helper.sort((a: { time: number }, b: { time: number }) => a.time - b.time) // 0 is the lowest time, n is the nearest time
         console.log(fake_chat_helper)
         setlist(fake_chat_helper)
+        const scroll = document.querySelector('#bottom_chat')
+        setTimeout(()=>{
+            if (scroll) {
+                scroll.scrollTop = scroll.scrollHeight
+            }
+        },500)
     }, [])
     return <>
         <div style={{
@@ -62,7 +74,7 @@ export default function Chat() {
             <ul className="list-group list-group-flush">
                 <li className="list-group-item" style={{backgroundColor: '#3c2f2f', color: 'white'}}>Header</li>
             </ul>
-            <div style={{overflowY: 'scroll'}}>
+            <div style={{overflowY: 'scroll'}} id={'bottom_chat'}>
                 {fake_List.map(
                     (el: { time: number, text: string, user: string } | null) => {
                         if (el) return <div>
@@ -124,7 +136,8 @@ export default function Chat() {
 }
 
 function Chat_box({time, text, user}: { time: number, text: string, user: string }) {
-    if (user === 'me') return <div style={{float: 'right', width: '90%', textAlign: 'right'}}>
+    // toISOString (test time on server > current time, so maybe there is a bug with toLocaleDate()
+    if (user === 'me') return <div style={{float: 'right', width: '90%', textAlign: 'right'}} key={time}>
 
         <div className="input-group mb-3 list-group list-group-flush"
              style={{display: 'grid', gridTemplateColumns: 'auto 3em', gap: '0.5em',}}>
@@ -137,19 +150,12 @@ function Chat_box({time, text, user}: { time: number, text: string, user: string
                     <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
                 </svg>
             </span>
-
         </div>
-        {/*<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"*/}
-        {/*     className="bi bi-person-circle" viewBox="0 0 16 16">*/}
-        {/*    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>*/}
-        {/*    <path fill-rule="evenodd"*/}
-        {/*          d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>*/}
-        {/*</svg>*/}
-        <p style={{fontSize: '0.5em', textAlign: 'center'}}> {new Date(time).toLocaleString()}</p>
+        <p style={{fontSize: '0.5em', textAlign: 'center'}}> {new Date(time).toISOString()}</p>
 
 
     </div>
-    if (user === 'helper') return <div style={{float: 'left', width: '90%', textAlign: 'left'}}>
+    if (user === 'helper') return <div style={{float: 'left', width: '90%', textAlign: 'left'}} key={time}>
 
         <div className="input-group mb-3 list-group list-group-flush"
              style={{display: 'grid', gridTemplateColumns: '3em auto', gap: '0.5em',}}>
@@ -163,7 +169,7 @@ function Chat_box({time, text, user}: { time: number, text: string, user: string
             <span className="input-group mb-3list-group-item border"
                   style={{backgroundColor: 'whitesmoke', borderRadius: '5px'}}> {text} </span>
         </div>
-        <p style={{fontSize: '0.5em', textAlign: 'center'}}> {new Date(time).toLocaleString()}</p>
+        <p style={{fontSize: '0.5em', textAlign: 'center'}}> {new Date(time).toISOString()}</p>
     </div>
     return null
 }
