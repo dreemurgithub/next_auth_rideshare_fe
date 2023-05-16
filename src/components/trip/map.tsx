@@ -1,6 +1,8 @@
 import * as dotenv from 'dotenv'
 import {useEffect} from "react";
 import Link from 'next/link'
+import Rating from '@mui/material/Rating';
+
 import styles from "@/components/trip/history.module.css";
 import {GoogleMap, MarkerF, useLoadScript} from "@react-google-maps/api";
 // TODO read this for embed map https://developers.google.com/maps/documentation/embed/get-started?hl=vi
@@ -29,8 +31,19 @@ export default function Map({lat, long, street, driver, rating, city, user,road,
             <li className={'list-group-item'}>To: <b>{street} {city}</b></li>
             <div className={'list-group-item'} style={{ display:'flex',justifyContent:'space-around' }}>
                 <span className={'btn'}>{(road*price).toLocaleString()}đ</span>
-                <span className={'btn'}>{rating}/5</span>
                 <span onClick={rebook} className={'btn btn-success'}>ReBook</span>
+            </div>
+            <div className={'list-group-item'} style={{ display:'flex',justifyContent:'space-around' }}>
+                <span>{
+                    (()=>{
+                        if(rating>=4) return 'Very Good!'
+                        if(rating>=3&&rating<4) return 'Okay'
+                        if(rating>=2&&rating<3) return 'Bad :('
+                        if(rating<2) return 'Really bad!!!'
+                        return null
+                    })()
+                }</span>
+                <Rating name="read-only" value={rating} precision={0.5}  readOnly />
             </div>
         </ul>
 

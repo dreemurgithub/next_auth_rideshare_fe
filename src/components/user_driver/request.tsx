@@ -40,7 +40,7 @@ export default function Request(driver: {
         </BasicRating>
     </div>
 
-    if (driver === null) return null
+    // if (!driver === null) return null
     return null
 }
 

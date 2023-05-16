@@ -139,3 +139,29 @@ Dự kiến mai
 Dự kiến mai
 - Tiếp tục hoàn thành design và đợi góp ý
 - Clean up các component và fake data cũng như API không dùng đến để hoàn thiện sản phẩm 
+
+### Ngày 15/5
+- Thiết kế fake data đơn giản cho chưc năng chat để hiển thị đối thoại của user và sale
+  - Tin nhắn phân ra thành user 'me' (của khách hàng) và 'helper' để hiển thị chat 2 bên
+  - Cho phép user send message và thay đổi client state
+  - Chat có thể kết nối với backend
+- Style khung chat
+  - scroll tới tin nhắn cuối cùng
+  - Khi gõ text sẽ hide các button bớt, khi text xóa đi sẽ hiển thị thêm các tùy chọn(hoạt động na ná như facebook messenger)
+  - chat gắn dưới góc phải
+  Dự kiến mai
+- Tiếp tục design help page
+- Sau khi hoàn thành help page sẽ clean up hết các function không dùng
+
+### Ngày 16/5
+
+- Style help page bằng một số form đơn giản
+- Hoàn thành Chat
+  - Scroll to bottom tự động khi bật/tắt chat và sau khi gửi tin nhắn
+  - Gõ enter để tự động send tin nhắn
+  - Tin nhắn hiển thị email của user trên header
+  - Tắt bật chat
+- Clean up navbar khỏi một số page không dùng
+- Style lại lịch sử chuyến đi, hiển thị sao thì vì 3/4...
+
+Dự kiến tiếp theo: Đợi góp ý code, hiện tại đã hoàn thành hết các chức năng frontend được giao
