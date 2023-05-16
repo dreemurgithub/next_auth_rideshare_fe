@@ -62,7 +62,7 @@ export default function Chat() {
                 scroll.scrollTop = scroll.scrollHeight
             }
         },100)
-    }, [])
+    }, [On_off])
     if(On_off) return <>
         <div style={{
             height: '25em',
@@ -152,7 +152,10 @@ export default function Chat() {
             right:'1em',
             zIndex:'100',
             cursor : 'pointer'
-        }} onClick={()=>setonOFF(true)}>
+        }} onClick={()=> {
+            setonOFF(true)
+            send_message()
+        }}>
             <li className="list-group-item" style={{backgroundColor: '#3c2f2f', color: 'white',display:'flex',justifyContent:'space-between'}}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                      className="bi bi-chat-fill" viewBox="0 0 16 16">

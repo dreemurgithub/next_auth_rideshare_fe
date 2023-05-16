@@ -77,8 +77,8 @@ function Nav_collapse() {
                         <span className="nav-link" onClick={() => signIn()} style={{backgroundColor:'#0d6efd',borderRadius:'10px',color:'white',cursor:'pointer'} }>Sign In</span>}
                 </li>
                 <li className={'nav-item'}><Link className={'nav-link'} href={'/user'}>User Page</Link></li>
-                <li className={'nav-item'}><Link className={'nav-link'} href={'/trip'}>Trip</Link></li>
-                <li className={'nav-item'}><Link className={'nav-link'} href={'/driver'}>Driver Page</Link></li>
+                {/*<li className={'nav-item'}><Link className={'nav-link'} href={'/trip'}>Trip</Link></li>*/}
+                {/*<li className={'nav-item'}><Link className={'nav-link'} href={'/driver'}>Driver Page</Link></li>*/}
                 <li className={'nav-item'}><Link className={'nav-link'} href={'/help'}>Help Page</Link></li>
 
                 <div className="dropdown">
