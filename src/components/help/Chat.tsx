@@ -1,6 +1,8 @@
 import {useState, FormEvent, useEffect} from "react";
-
+import {useSession} from "next-auth/react";
 export default function Chat() {
+    const {data : session} = useSession()
+    const [On_off,setonOFF] = useState(false)
     const [displayButton, setButton] = useState('block')
     const fake_chat_user = [
         {time: 1684157520000, text: 'me hello 8', user: 'me'},
@@ -44,7 +46,7 @@ export default function Chat() {
             if (scroll) {
                 scroll.scrollTop = scroll.scrollHeight
             }
-        },500)
+        },100)
     }
     useEffect(() => {
 
@@ -59,9 +61,9 @@ export default function Chat() {
             if (scroll) {
                 scroll.scrollTop = scroll.scrollHeight
             }
-        },500)
+        },100)
     }, [])
-    return <>
+    if(On_off) return <>
         <div style={{
             height: '25em',
             width: '25em',
@@ -74,7 +76,10 @@ export default function Chat() {
             zIndex:'100'
         }} className={'card'}>
             <ul className="list-group list-group-flush">
-                <li className="list-group-item" style={{backgroundColor: '#3c2f2f', color: 'white'}}>Header</li>
+                <li className="list-group-item" style={{backgroundColor: '#3c2f2f', color: 'white',display:'flex',justifyContent:'space-between'}}>
+                    <span>{(session&& session.user )? session.user.name : null }</span>
+                    <span style={{cursor:'pointer'}} onClick={ ()=>setonOFF(false) }>X</span>
+                </li>
             </ul>
             <div style={{overflowY: 'scroll'}} id={'bottom_chat'}>
                 {fake_List.map(
@@ -92,6 +97,8 @@ export default function Chat() {
                         <input type='text' id={'chat_user'} className="form-control" onChange={(e: FormEvent<HTMLInputElement>) => {
                             if (e.currentTarget.value !== '') setButton('none')
                             else setButton('block')
+                        }} onKeyDown={(e:any)=> {
+                            if (e.key === 'Enter') send_message()
                         }}></input>
                         <button className="input-group-text btn btn-primary" onClick={send_message}>Send</button>
                         <button className={'btn btn-success'} style={{display: displayButton}}>
@@ -134,6 +141,27 @@ export default function Chat() {
                 </div>
             </ul>
         </div>
+    </>
+    else return <>
+        <ul className="list-group list-group-flush" style={{
+            height: '2em',
+            width: '9em',
+            backgroundColor: '#708090',
+            position:'fixed',
+            bottom : '1em',
+            right:'1em',
+            zIndex:'100',
+            cursor : 'pointer'
+        }} onClick={()=>setonOFF(true)}>
+            <li className="list-group-item" style={{backgroundColor: '#3c2f2f', color: 'white',display:'flex',justifyContent:'space-between'}}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     className="bi bi-chat-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9.06 9.06 0 0 0 8 15z"/>
+                </svg>
+                Let us help!
+            </li>
+        </ul>
     </>
 }
 
