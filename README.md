@@ -1,15 +1,11 @@
 # Rideshare app
 ## How to start
 ### npm run dev
-Run the dev version
+Chạy dev version, chưa compile
+### npm run Build
+Compile typescript, chạy cái này trước khi dùng NPM run start
 ### npm run start
-Run the compiled version
-## Server Routes API
-## Frontend
-### User
-### Driver
-### Interaction
-## Fake Data
+Chạy bản đã compile
 ## Link to other documents
 [Trello Board for the front end](https://trello.com/b/2zewDXi9)
 
