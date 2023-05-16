@@ -4,7 +4,8 @@ export async function read_card(){
     const res = await fetch(Wallet_request)
     return res.json()
 }
-export async function add_card(){
+export async function add_card(email : string | null | undefined){
+    if(!email) return
     const name_input: HTMLInputElement | null = document.querySelector('input#name')
     const creditNumber_input: HTMLInputElement | null = document.querySelector('input#creditNumber')
     const Month_input: HTMLInputElement | null = document.querySelector('select#ccmonth')
@@ -15,7 +16,8 @@ export async function add_card(){
         expM: (Month_input)? parseInt(Month_input.value) : null,
         expY: (year_input)? parseInt(year_input.value)  : null,
         name: (name_input)? name_input.value : null ,
-        CVV : (cvv_input)? parseInt(cvv_input.value) : null
+        CVV : (cvv_input)? parseInt(cvv_input.value) : null,
+        user : email
     }
     const response = await fetch(Wallet_request,{
         method:'POST',

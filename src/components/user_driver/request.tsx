@@ -70,7 +70,7 @@ function BasicRating({children, user, viewer, driver}: {
         <div>
             {children}
             {(user === viewer) ? <>
-                    <div>
+                    <div style={ {display:'flex',justifyContent:'space-between',border:'solid 1px black',borderRadius:'5px',padding:'5px'} } >
                         <span>Safety</span>
                         <Rating
                             name="simple-controlled"
@@ -80,7 +80,7 @@ function BasicRating({children, user, viewer, driver}: {
                             }}
                         />
                     </div>
-                    <div>
+                    <div style={ {display:'flex',justifyContent:'space-between',border:'solid 1px black',borderRadius:'5px',padding:'5px'} }>
                         <span>Efficient</span>
                         <Rating
                             name="simple-controlled"
@@ -91,7 +91,7 @@ function BasicRating({children, user, viewer, driver}: {
                         />
 
                     </div>
-                    <div>
+                    <div style={ {display:'flex',justifyContent:'space-between',border:'solid 1px black',borderRadius:'5px',padding:'5px'} }>
                         <span>Speed</span>
                         <Rating
                             name="simple-controlled"
@@ -102,7 +102,7 @@ function BasicRating({children, user, viewer, driver}: {
                         />
 
                     </div>
-                    <div>
+                    <div style={ {display:'flex',justifyContent:'space-between',border:'solid 1px black',borderRadius:'5px',padding:'5px'} }>
                         <span>Attitude</span>
                         <Rating
                             name="simple-controlled"
@@ -115,13 +115,15 @@ function BasicRating({children, user, viewer, driver}: {
                     </div>
                 </>
                 : null}
-            {(viewer === user) ? <div>
-                    <button onClick={() => {
+            {(viewer === user) ? <div style={ {display:'flex',justifyContent:'space-between'} }>
+                <div className="btn-group" role="group">
+
+                    <button className="btn btn-danger" onClick={() => {
                         if (driver !== null) Delete_request_withID(driver.id)
                     }}>Cancel
                     </button>
 
-                    <button onClick={() => {
+                    <button className="btn btn-primary" onClick={() => {
                         if (driver !== null) {
                             const any_request = driver as any
                             any_request.rating = (vv + vv2 + vv3 + vv4) / 4
@@ -129,7 +131,8 @@ function BasicRating({children, user, viewer, driver}: {
                         }
                     }}>Finish
                     </button>
-                    <span>Rating: {(vv + vv2 + vv3 + vv4) / 4}</span>
+                </div>
+                    <span>Rating: {(vv + vv2 + vv3 + vv4) / 4}/5</span>
                 </div>
                 : null}
         </div>

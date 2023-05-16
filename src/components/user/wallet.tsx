@@ -1,22 +1,30 @@
 import {useEffect, useState} from "react";
 import styles from './style.module.css'
 import {add_card , removeCard , read_card} from "@/utils/user/wallet";
+import {useSession} from "next-auth/react";
 export default function Wallet() {
+    const {data : session} = useSession()
     const [wallet, setwallet] = useState([])
     useEffect(() => {
         async function read_c(){
+            const email = (session&&session.user)? session.user.email : null
             const new_read = await read_card()
-            setwallet(new_read)
+            const new_filter = new_read.filter((el: any)=>el.user===email)
+            setwallet(new_filter)
         }
         read_c()
     }, [])
     async function add_card_state(){
-        const new_state = await add_card()
-        setwallet(new_state)
+        const email = (session&&session.user)? session.user.email : null
+        const new_state = await add_card(email)
+        const new_filter = new_state.filter((el: any)=>el.user===email)
+        setwallet(new_filter)
     }
     async function remove_card_state(card:{ creditnumber: string}){
+        const email = (session&&session.user)? session.user.email : null
         const new_card_remove = await removeCard(card)
-        setwallet(new_card_remove)
+        const new_filter = new_card_remove.filter((el: any)=>el.user===email)
+        setwallet(new_filter)
     }
 
     return <>
