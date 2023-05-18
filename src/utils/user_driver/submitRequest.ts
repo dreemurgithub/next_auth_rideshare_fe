@@ -5,9 +5,10 @@ export function submitRequest(any_session : any,driver_infor:{driver: string , p
     else {
         console.log(any_session.user.email)
         const road_element : HTMLInputElement | null = document.querySelector('#road')
+        const address_element : HTMLInputElement | null = document.querySelector('#address')
         const item = {
             id: new Date().getTime().toString(),
-            street: "10 Phan Châu Trinh",
+            street: (address_element===null|| address_element.value==='')? 0  : address_element.value,
             // id: driver_infor.id,
             driver : driver_infor.driver,
             price: driver_infor.price,
